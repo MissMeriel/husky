@@ -2,8 +2,8 @@
 <!--
 Software License Agreement (BSD)
 
-\file      description.launch
-\authors   Paul Bovbel <pbovbel@clearpathrobotics.com>, Devon Ash <dash@clearpathrobotics.com>
+\file      husky_playpen.launch
+\authors   Paul Bovbel <pbovbel@clearpathrobotics.com
 \copyright Copyright (c) 2015, Clearpath Robotics, Inc., All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that
@@ -25,19 +25,15 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
 -->
 <launch>
 
-  <arg name="robot_namespace" default="/"/>
-  <arg name="laser_enabled" default="$(optenv HUSKY_LMS1XX_ENABLED false)"/>
-  <arg name="kinect_enabled" default="$(optenv HUSKY_KINECT_ENABLED false)"/>
-  <arg name="realsense_enabled" default="$(optenv HUSKY_REALSENSE_ENABLED false)"/>
-  <arg name="urdf_extras" default="$(optenv HUSKY_URDF_EXTRAS)"/>
-
-  <param name="robot_description" command="$(find xacro)/xacro '$(find husky_description)/urdf/husky.urdf.xacro'
-    robot_namespace:=$(arg robot_namespace)
-    laser_enabled:=$(arg laser_enabled)
-    kinect_enabled:=$(arg kinect_enabled)
-    realsense_enabled:=$(arg realsense_enabled)
-    urdf_extras:=$(arg urdf_extras)
-    --inorder
-    " />
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <!-- <arg name="world_name" value="$(find husky_gazebo)/worlds/clearpath_playpen_min1.world"/>-->
+    <!-- <arg name="world_name" value="$(find husky_gazebo)/worlds/volcano.world"/> -->
+    <arg name="world_name" value="$(find husky_gazebo)/worlds/rubble.world"/> 
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
 
 </launch>
