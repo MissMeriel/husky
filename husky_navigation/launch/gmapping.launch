@@ -37,10 +37,11 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
 
       maxUrange: 5.5 # Should be just less than sensor range
       maxRange: 6.1 # Should be just greater than sensor range
-      particles: 100 # Increased from 80
+      # particles: 100 # Increased from 80
+      particles: 30
 
       # Update frequencies
-      linearUpdate: 0.3
+      linearUpdate: 0.5
       angularUpdate: 0.5
       temporalUpdate: 2.0
       resampleThreshold: 0.5
