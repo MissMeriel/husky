@@ -7,6 +7,7 @@
   <arg name="realsense_enabled" default="false"/>
 
   <include file="$(find husky_gazebo)/launch/rough_terrain.launch">
+  <arg name="world_name" value="$(find husky_gazebo)/worlds/rough_terrain_gap4.world"/>
   <remap from="/scan" to="/remapped_scan"/>
   </include>
 
@@ -14,9 +15,13 @@
     <arg name="laser_enabled" value="$(arg laser_enabled)"/>
     <arg name="kinect_enabled" value="$(arg kinect_enabled)"/>
     <arg name="realsense_enabled" value="$(arg realsense_enabled)"/>
-    <arg name="x" value="0.0"/>
+    <arg name="x" value="-3.0"/>
     <arg name="y" value="0.0"/>
     <arg name="z" value="10.0"/>
+    <arg name="scan_topic" value="/remapped_scan"/>
+    <!--<arg name="x" value="0.0"/>
+    <arg name="y" value="0.0"/>
+    <arg name="z" value="10.0"/>-->
     <remap from="/scan" to="/remapped_scan"/>
     <!-- <arg name="x" value="1.0"/>
     <arg name="y" value="1.0"/>

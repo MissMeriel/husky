@@ -8,8 +8,10 @@
 
 
   <!--- Run AMCL -->
-  <include file="$(find husky_navigation)/launch/amcl.launch" />
-  <param name="scan_topic" value="/remapped_scan" />
+  <include file="$(find husky_navigation)/launch/amcl.launch" >
+  <!--<arg name="scan_topic" value="/remapped_scan" />-->
+  <arg name="odom_frame_id" value="odom" />
+  </include>
 
   <!--- Run /scan data-faking node -->
   <node name="fake_scan" pkg="husky_navigation" type="fake_scanner.py"/>

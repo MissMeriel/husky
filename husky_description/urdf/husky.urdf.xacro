@@ -44,6 +44,10 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
   <xacro:arg name="robot_namespace" default="/" />
   <xacro:arg name="urdf_extras" default="empty.urdf" />
 
+  <!-- Topic to remap real scan data to (in order to fake scan data) -->
+  <xacro:arg name="scan_topic" default="scan" />
+  <xacro:arg name="realsense_topic" default="realsense" />
+  
   <!-- Included URDF/XACRO Files -->
   <xacro:include filename="$(find husky_description)/urdf/decorations.urdf.xacro" />
   <xacro:include filename="$(find husky_description)/urdf/wheel.urdf.xacro" />
@@ -146,7 +150,8 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
 
     <sick_lms1xx_mount prefix="base"/>
 
-    <sick_lms1xx frame="base_laser" topic="remapped_scan" robot_namespace="$(arg robot_namespace)"/>
+    <!--<sick_lms1xx frame="base_laser" topic="$(arg scan_topic)" robot_namespace="$(arg robot_namespace)"/>-->
+    <sick_lms1xx frame="base_laser" topic="remapped_scan" robot_namespace="$(arg robot_namespace)"/>--
 
     <joint name="laser_mount_joint" type="fixed">
       <origin xyz="$(arg laser_xyz)" rpy="$(arg laser_rpy)" />
@@ -184,7 +189,7 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
       <parent link="$(arg realsense_mount)"/>
       <child link="realsense_mountpoint" />
     </joint>
-    <xacro:intel_realsense_mount prefix="camera" topic="realsense" parent_link="realsense_mountpoint"/>
+    <xacro:intel_realsense_mount prefix="camera" topic="$(arg realsense_topic)" parent_link="realsense_mountpoint"/>
   </xacro:if>
 
   <gazebo>

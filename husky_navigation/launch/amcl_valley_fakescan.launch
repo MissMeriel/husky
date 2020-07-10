@@ -6,8 +6,11 @@
   <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
 
   <!--- Run AMCL -->
-  <include file="$(find husky_navigation)/launch/amcl.launch" />
+  <include file="$(find husky_navigation)/launch/amcl.launch" >
   <param name="scan_topic" value="/remapped_scan" />
+  <param name="use_map_topic" value="true" />
+  <arg name="odom_frame_id" value="/map" />
+  </include>
 
   <!--- Run /scan data-faking node -->
   <node name="fake_scan" pkg="husky_navigation" type="fake_scanner.py"/>
