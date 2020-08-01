@@ -5,9 +5,10 @@
   <arg name="laser_enabled" default="true"/>
   <arg name="kinect_enabled" default="false"/>
   <arg name="realsense_enabled" default="false"/>
+  <arg name="world_name" default="$(find husky_gazebo)/worlds/rough_terrain_gap3.world"/>
 
   <include file="$(find husky_gazebo)/launch/rough_terrain.launch">
-  <arg name="world_name" value="$(find husky_gazebo)/worlds/rough_terrain_gap4.world"/>
+  <arg name="world_name" value="$(arg world_name)"/>
   <remap from="/scan" to="/remapped_scan"/>
   </include>
 
