@@ -23,7 +23,7 @@
   <node name="fake_scan" pkg="husky_navigation" type="fake_scanner.py" output="screen"/>
 
   <!--- Run pose-logging node -->
-  <!--- <node name="pose_logger" pkg="husky_navigation" type="log_for_dd.py" output="screen"/> -->
+  <node name="pose_logger" pkg="husky_navigation" type="log_for_dd.py" output="screen"/>
 
   <!--- Run Move Base -->
   <include file="$(find husky_navigation)/launch/move_base.launch">
