@@ -18,13 +18,6 @@ current_pose = None
 def pose_callback(data):
    global current_pose
    current_pose = data
-   
-def goal_callback(data):
-   global goal
-   #rospy.loginfo(rospy.get_caller_id() + "I heard %s", data)
-   #print("THIS IS THE GOAL: "+str(goal))
-   goal = data
-   #print("THIS IS THE INITIALIZED GOAL: "+str(goal))
 
 def action_goal_callback(data):
    global goal, posefile
@@ -45,28 +38,26 @@ def parse_message(trans, rot):
 
 def main():
    global posefile, current_pose
-   # anonymous adds number
+   ### anonymous adds number
    rospy.init_node('pose_logger', anonymous=False)
    listener = tf.TransformListener()
-   #rospy.Subscriber("/move_base_simple/goal", PoseStamped, goal_callback)
+   ### vvvvv this breaks move_base action server for some reason vvvvv
+   #rospy.Subscriber("/move_base_simple/goal", PoseStamped, goal_callback) 
    rospy.Subscriber("/move_base/goal", MoveBaseActionGoal, action_goal_callback)
 
-   # open pose file
+   ### open pose file
    dirname = os.path.dirname(__file__)
    filename = os.path.join(dirname, 'poses.log')
    posefile = open(filename, 'w')
-   # write a pose every second
+   ### write a pose every second
    rate = rospy.Rate(1)
    trans = None
    rot = None
    while not rospy.is_shutdown():
-      #rospy.loginfo("INSIDE ROSPY LOOP")
       try:
          (trans,rot) = listener.lookupTransform('odom', '/base_link', rospy.Time(0))
       except (tf.LookupException, tf.ConnectivityException, tf.ExtrapolationException):
          continue
-      #trans = [1, 2, 3]
-      #rot = [4, 5, 6]
       msg_string = parse_message(trans, rot)
       posefile.write(msg_string+"\n")
       rate.sleep()

@@ -5,6 +5,8 @@
   <arg name="map_file" default="$(find husky_navigation)/maps/rough_terrain.yaml"/>
   <arg name="record_all" default="true"/>
   <arg name="output" default="screen"/>
+  <arg name="scan_topic" default="remapped_scan"/>
+  
   <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
 
   <!-- Bag all topics -->
@@ -14,7 +16,7 @@
 
   <!--- Run AMCL -->
   <include file="$(find husky_navigation)/launch/amcl.launch" >
-  <!--<arg name="scan_topic" value="/remapped_scan" />-->
+  <arg name="scan_topic" value="/remapped_scan" />
   <arg name="odom_frame_id" value="odom" />
   <arg name="output" value="$(arg output)" />
   </include>

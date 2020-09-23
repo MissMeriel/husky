@@ -2911,9 +2911,9 @@
                 <ode/>
               </torsional>
               <ode>
-               <mu>100</mu>
-               <mu2>50</mu2>
-             </ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
             </friction>
           </surface>
         </collision>
@@ -37818,35 +37818,35 @@
       <pose frame=''>4.55016 1.5956 0.777128 0 -0 0</pose>
     </model>
     <state world_name='default'>
-      <sim_time>883 347000000</sim_time>
-      <real_time>920 861445359</real_time>
-      <wall_time>1594303580 385873646</wall_time>
-      <iterations>883347</iterations>
+      <sim_time>1639 905000000</sim_time>
+      <real_time>403 927153680</real_time>
+      <wall_time>1597856799 577796587</wall_time>
+      <iterations>403313</iterations>
       <model name='asphalt_plane'>
-        <pose frame=''>-8.5061 2.10411 0.812171 0 -0 0</pose>
-        <scale>1 1 1</scale>
+        <pose frame=''>-8.53833 2.29833 0.165376 0 -0 0</pose>
+        <scale>1 1 14.296</scale>
         <link name='link'>
-          <pose frame=''>-8.5061 2.10411 0.812171 0 -0 0</pose>
+          <pose frame=''>-8.53833 2.29833 0.165376 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='asphalt_plane_clone'>
-        <pose frame=''>11.7986 1.57841 0.812171 0 -0 0</pose>
-        <scale>1 1 1</scale>
+        <pose frame=''>11.9689 2.28539 0.340279 0 -0 0</pose>
+        <scale>1 1 10.6472</scale>
         <link name='link'>
-          <pose frame=''>11.7986 1.57841 0.812171 0 -0 0</pose>
+          <pose frame=''>11.9689 2.28539 0.340279 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='cinder_block'>
-        <pose frame=''>4.44808 -1.10206 0.861632 0 0 -0.031561</pose>
+        <pose frame=''>4.44808 -1.10206 0.872098 0 0 -0.031561</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>4.44808 -1.10206 0.861632 0 0 -0.031561</pose>
+          <pose frame=''>4.44808 -1.10206 0.872098 0 0 -0.031561</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
@@ -38043,20 +38043,20 @@
         </link>
       </model>
       <model name='frc2016_roughterrain_1_clone_11_clone_3'>
-        <pose frame=''>2.4767 -1.16664 0.777128 0 -0 0</pose>
+        <pose frame=''>2.63981 -1.16664 0.777128 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>2.4767 -1.16664 0.777128 0 -0 0</pose>
+          <pose frame=''>2.63981 -1.16664 0.777128 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='frc2016_roughterrain_1_clone_11_clone_4'>
-        <pose frame=''>2.48837 1.7133 0.777128 0 -0 0</pose>
+        <pose frame=''>2.63372 1.7133 0.777128 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>2.48837 1.7133 0.777128 0 -0 0</pose>
+          <pose frame=''>2.63372 1.7133 0.777128 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
@@ -38093,10 +38093,10 @@
         </link>
       </model>
       <model name='frc2016_roughterrain_1_clone_11_clone_8'>
-        <pose frame=''>4.43565 1.0294 0.777128 0 -0 0</pose>
+        <pose frame=''>5.03031 1.0294 0.777128 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>4.43565 1.0294 0.777128 0 -0 0</pose>
+          <pose frame=''>5.03031 1.0294 0.777128 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
@@ -38183,30 +38183,30 @@
         </link>
       </model>
       <model name='frc2016_roughterrain_1_clone_4'>
-        <pose frame=''>2.43054 0.752076 0.777128 0 -0 0</pose>
+        <pose frame=''>2.64599 0.752076 0.777128 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>2.43054 0.752076 0.777128 0 -0 0</pose>
+          <pose frame=''>2.64599 0.752076 0.777128 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='frc2016_roughterrain_1_clone_5'>
-        <pose frame=''>2.44644 0.376981 0.777128 0 -0 0</pose>
+        <pose frame=''>2.63625 0.376981 0.777128 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>2.44644 0.376981 0.777128 0 -0 0</pose>
+          <pose frame=''>2.63625 0.376981 0.777128 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='frc2016_roughterrain_1_clone_6'>
-        <pose frame=''>2.49084 -0.072435 0.777128 0 -0 0</pose>
+        <pose frame=''>2.63776 -0.072435 0.777128 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>2.49084 -0.072435 0.777128 0 -0 0</pose>
+          <pose frame=''>2.63776 -0.072435 0.777128 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
@@ -38223,30 +38223,30 @@
         </link>
       </model>
       <model name='frc2016_roughterrain_1_clone_8'>
-        <pose frame=''>2.44374 -0.424382 0.777128 0 -0 0</pose>
+        <pose frame=''>2.6413 -0.424382 0.777128 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>2.44374 -0.424382 0.777128 0 -0 0</pose>
+          <pose frame=''>2.6413 -0.424382 0.777128 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='frc2016_roughterrain_1_clone_9'>
-        <pose frame=''>2.43111 -0.802714 0.777128 0 -0 0</pose>
+        <pose frame=''>2.64305 -0.802714 0.777128 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>2.43111 -0.802714 0.777128 0 -0 0</pose>
+          <pose frame=''>2.64305 -0.802714 0.777128 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='frc2016_roughterrain_2'>
-        <pose frame=''>2.91257 0.026231 0.305135 0 -0 0</pose>
+        <pose frame=''>2.91257 0.026231 0.775829 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>2.91257 0.026231 0.305135 0 -0 0</pose>
+          <pose frame=''>2.91257 0.026231 0.775829 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
@@ -38268,7 +38268,7 @@
     </state>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose frame=''>2.22414 -9.59647 15.6576 -0 1.13964 0.992194</pose>
+        <pose frame=''>1.79795 -14.0205 2.63637 0 -0.00036 1.59619</pose>
         <view_controller>orbit</view_controller>
         <projection_type>perspective</projection_type>
       </camera>

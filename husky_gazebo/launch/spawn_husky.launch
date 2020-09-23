@@ -38,7 +38,7 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
   <arg name="kinect_enabled" default="$(optenv HUSKY_KINECT_ENABLED false)"/>
   <arg name="realsense_enabled" default="$(optenv HUSKY_REALSENSE_ENABLED false)"/>
   <arg name="urdf_extras" default="$(optenv HUSKY_URDF_EXTRAS)"/>
-  <arg name="scan_topic" default="remapped_scan"/>
+  <arg name="scan_topic" default="/remapped_ scan"/>
   <arg name="realsense_topic" default="realsense"/>
 
   <group ns="$(arg robot_namespace)">
@@ -72,6 +72,7 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
         <arg name="kinect_enabled" value="$(arg kinect_enabled)"/>
         <arg name="realsense_enabled" default="$(arg realsense_enabled)"/>
         <arg name="urdf_extras" value="$(arg urdf_extras)"/>
+        <arg name="scan_topic" value="$(arg scan_topic)"/>
       </include>
     </group>
 

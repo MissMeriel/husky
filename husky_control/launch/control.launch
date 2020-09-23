@@ -13,6 +13,8 @@
   <arg name="realsense_enabled" default="$(optenv HUSKY_REALSENSE_ENABLED false)"/>
   <arg name="urdf_extras" default="$(optenv HUSKY_URDF_EXTRAS)"/>
 
+  <arg name="scan_topic" default="scan"/>
+
   <include file="$(find multimaster_launch)/launch/multimaster_robot.launch" if="$(arg multimaster)">
     <arg name="gazebo_interface" value="$(find husky_control)/config/gazebo_interface.yaml" />
     <arg name="public_interface" value="$(find husky_control)/config/public_interface.yaml" />
@@ -26,6 +28,7 @@
     <arg name="kinect_enabled" default="$(arg kinect_enabled)"/>
     <arg name="realsense_enabled" default="$(arg realsense_enabled)"/>
     <arg name="urdf_extras" default="$(arg urdf_extras)"/>
+    <arg name="scan_topic" default="$(arg scan_topic)"/>
   </include>
 
   <!-- Load controller configuration -->

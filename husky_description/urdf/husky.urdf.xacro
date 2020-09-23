@@ -150,8 +150,8 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
 
     <sick_lms1xx_mount prefix="base"/>
 
-    <!--<sick_lms1xx frame="base_laser" topic="$(arg scan_topic)" robot_namespace="$(arg robot_namespace)"/>-->
-    <sick_lms1xx frame="base_laser" topic="remapped_scan" robot_namespace="$(arg robot_namespace)"/>--
+    <sick_lms1xx frame="base_laser" topic="$(arg scan_topic)" robot_namespace="$(arg robot_namespace)"/>
+    <!-- <sick_lms1xx frame="base_laser" topic="remapped_scan" robot_namespace="$(arg robot_namespace)"/>-->
 
     <joint name="laser_mount_joint" type="fixed">
       <origin xyz="$(arg laser_xyz)" rpy="$(arg laser_rpy)" />
