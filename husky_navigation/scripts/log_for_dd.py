@@ -14,7 +14,7 @@ goal = None #[0.0, 0.0, 0.0]
 posefile = None
 epsilon = 0.05
 current_pose = None
-epsilon_goal = 0.25
+epsilon_goal = 0.1
 
 def pose_callback(data):
    global current_pose
@@ -23,14 +23,14 @@ def pose_callback(data):
 def action_goal_callback(data):
    global goal, posefile
    goal = data.goal.target_pose.pose
-   rospy.loginfo(rospy.get_caller_id() + " THIS IS THE INITIALIZED GOAL: "+str(goal))
+   rospy.loginfo(rospy.get_caller_id() + "GOAL INITIALIZED AS: "+str(goal))
    goal = parse_goal_message(goal)
    posefile.write("GOAL {} \n".format(goal))
 
 # can also parse tf msg
 def parse_goal_message(data):
    msglist = [data.position.x, data.position.y, data.position.z, data.orientation.x, data.orientation.y, data.orientation.z, data.orientation.w]
-   rospy.loginfo(rospy.get_caller_id() + " goal message list:" + str(msglist))
+   #rospy.loginfo(rospy.get_caller_id() + " goal message list:" + str(msglist))
    return msglist
 
 def parse_message(trans, rot):
