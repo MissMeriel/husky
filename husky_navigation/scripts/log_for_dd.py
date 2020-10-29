@@ -5,6 +5,7 @@ import rospy
 from sensor_msgs.msg import LaserScan
 import tf
 from geometry_msgs.msg import PoseStamped
+from geometry_msgs.msg import Twist
 import std_msgs.msg
 from move_base_msgs.msg import MoveBaseActionGoal
 import math
@@ -15,6 +16,9 @@ posefile = None
 epsilon = 0.05
 current_pose = None
 epsilon_goal = 0.1
+replan_keyword = "REPLAN"
+ang_z_vels = []
+ang_z_epsilon = 0.5
 
 def pose_callback(data):
    global current_pose
@@ -26,6 +30,16 @@ def action_goal_callback(data):
    rospy.loginfo(rospy.get_caller_id() + "GOAL INITIALIZED AS: "+str(goal))
    goal = parse_goal_message(goal)
    posefile.write("GOAL {} \n".format(goal))
+
+def cmd_vel_callback(data):
+   global replan_keyword, ang_z_vels, posefile
+   #print("data.angular.z: {}".format(data.angular.z))
+   ang_z_vels.append(data.angular.z)
+   mean = sum(ang_z_vels) / float(len(ang_z_vels))
+   if abs(mean - data.angular.z) > ang_z_epsilon:
+      posefile.write("{}\n".format(replan_keyword))
+      ang_z_vels = []
+      print(replan_keyword)
 
 # can also parse tf msg
 def parse_goal_message(data):
@@ -53,6 +67,7 @@ def main():
    ### anonymous adds number
    rospy.init_node('pose_logger', anonymous=False)
    listener = tf.TransformListener()
+   cmd_vel_listener = rospy.Subscriber("/cmd_vel", Twist, cmd_vel_callback)
    ### vvvvv this breaks move_base action server vvvvv
    #rospy.Subscriber("/move_base_simple/goal", PoseStamped, goal_callback) 
    rospy.Subscriber("/move_base/goal", MoveBaseActionGoal, action_goal_callback)
