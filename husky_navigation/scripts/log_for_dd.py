@@ -6,6 +6,7 @@ from sensor_msgs.msg import LaserScan
 import tf
 from geometry_msgs.msg import PoseStamped
 from geometry_msgs.msg import Twist
+from gazebo_msgs.msg import LinkStates
 import std_msgs.msg
 from move_base_msgs.msg import MoveBaseActionGoal
 import math
@@ -41,10 +42,23 @@ def cmd_vel_callback(data):
       ang_z_vels = []
       print(replan_keyword)
 
+def link_states_callback(data):
+   global current_pose
+   index = data.name.index('/::base_link')
+   pose = data.pose[index]
+   current_pose = pose
+
 # can also parse tf msg
 def parse_goal_message(data):
    msglist = [data.position.x, data.position.y, data.position.z, data.orientation.x, data.orientation.y, data.orientation.z, data.orientation.w]
    #rospy.loginfo(rospy.get_caller_id() + " goal message list:" + str(msglist))
+   return msglist
+
+def parse_twist_message(data):
+   try:
+      msglist = [data.position.x, data.position.y, data.position.z, data.orientation.x, data.orientation.y, data.orientation.z, data.orientation.w]
+   except:
+      msglist = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
    return msglist
 
 def parse_message(trans, rot):
@@ -62,12 +76,22 @@ def check_goal_proximity(trans, rot):
       return True
    return False
 
+def check_goal_proximity2(trans):
+   global epsilon_goal, goal
+   if goal == None:
+      return False
+   if distance(goal, trans[0:3]) < epsilon_goal:
+      return True
+   return False
+
+
 def main():
    global posefile, current_pose
    ### anonymous adds number
    rospy.init_node('pose_logger', anonymous=False)
    listener = tf.TransformListener()
    cmd_vel_listener = rospy.Subscriber("/cmd_vel", Twist, cmd_vel_callback)
+   cmd_vel_listener = rospy.Subscriber("/gazebo/link_states", LinkStates, link_states_callback)
    ### vvvvv this breaks move_base action server vvvvv
    #rospy.Subscriber("/move_base_simple/goal", PoseStamped, goal_callback) 
    rospy.Subscriber("/move_base/goal", MoveBaseActionGoal, action_goal_callback)
@@ -83,13 +107,14 @@ def main():
    trans = None
    rot = None
    while not rospy.is_shutdown():
-      try:
-         (trans,rot) = listener.lookupTransform('odom', '/base_link', rospy.Time(0))
-      except (tf.LookupException, tf.ConnectivityException, tf.ExtrapolationException):
-         continue
-      msg_string = parse_message(trans, rot)
-      posefile.write(msg_string+"\n")
-      near_goal = check_goal_proximity(trans, rot)
+      #try:
+      #   (trans,rot) = listener.lookupTransform('odom', '/base_link', rospy.Time(0))
+      #except (tf.LookupException, tf.ConnectivityException, tf.ExtrapolationException):
+      #   continue
+      #print("current_pose: {}".format(current_pose))
+      msg = parse_twist_message(current_pose)
+      posefile.write("{}\n".format(msg))
+      near_goal = check_goal_proximity2(msg[0:3])
       if (near_goal):
          posefile.write("GOAL REACHED\n")
       rate.sleep()
