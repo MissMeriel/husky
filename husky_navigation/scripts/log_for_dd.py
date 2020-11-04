@@ -44,7 +44,12 @@ def cmd_vel_callback(data):
 
 def link_states_callback(data):
    global current_pose
-   index = data.name.index('/::base_link')
+   index = len(data.name) - 4
+   #print("data.name: {}".format(data.name))
+   for i in range(len(data.name)):
+      if '/::base_link' in data.name[i]:
+         index = i
+         break
    pose = data.pose[index]
    current_pose = pose
 
